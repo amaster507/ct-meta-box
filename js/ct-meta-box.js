@@ -86,6 +86,12 @@ jQuery( document ).ready( function( $ ) {
 		timeFormat: ctmb.time_format, // from 12- or 24-hour format (always saved as 24-hour)
 		minTime: '06:00' // works for all formats
 	} );
+	
+	// jQuery MultiDatesPicker for 'multi-date' fields
+	$('.multiDatesPicker').multiDatesPicker({
+		dateFormat: "yy-mm-dd",
+	});
+	
 
 } );
 

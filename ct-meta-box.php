@@ -336,6 +336,7 @@ if ( ! class_exists( 'CT_Meta_Box' ) ) {
 				'range'				=> '',
 				'date'				=> '',
 				'time'				=> 'regular-text',
+				'multidates'		=> '',
 
 			);
 			$classes = array();
@@ -399,6 +400,13 @@ if ( ! class_exists( 'CT_Meta_Box' ) ) {
 
 						$input = '<input type="text" ' . $data['common_atts'] . ' id="' . $data['esc_element_id'] . '" value="' . $data['esc_value'] . '" />';
 
+						break;
+						
+					// MultiDatesPicker
+					case 'multidates':
+					
+						$input = '<input type="text" name="' . esc_attr( $data['key'] ) . '" id="' . $data['esc_element_id'] . '" value="' . $data['esc_value'] . '" class="multiDatesPicker" />';
+						
 						break;
 
 					// Textarea
@@ -953,6 +961,11 @@ if ( ! class_exists( 'CT_Meta_Box' ) ) {
 
 				// Meta boxes stylesheet
 				wp_enqueue_style( 'ctmb-meta-boxes', trailingslashit( CTMB_URL ) . 'css/ct-meta-box.css', false, $this->version ); // bust cache on update
+				
+				// MultiDatesPicker stylesheet
+				// http://dubrox.github.io/Multiple-Dates-Picker-for-jQuery-UI/
+				wp_enqueue_style( 'jquery-ui-multidatespicker', trailingslashit( CTMB_URL ) . 'css/jquery-ui.multidatespicker.css', false, $this->version ); // bust cache on update
+				
 
 			}
 
@@ -994,6 +1007,13 @@ if ( ! class_exists( 'CT_Meta_Box' ) ) {
 
 				// Meta boxes JavaScript
 				wp_enqueue_script( 'ctmb-meta-boxes', trailingslashit( CTMB_URL ) . 'js/ct-meta-box.js', false, $this->version ); // bust cache on update
+				
+				// scripts for MultiDatesPicker
+				//wp_enqueue_script('jquery-ui-core');
+				wp_enqueue_script( 'jquery-ui-min', trailingslashit( CTMB_URL ) . 'js/jquery-ui.min.js', false, $this->version ); // bust cache on update
+				
+				// http://dubrox.github.io/Multiple-Dates-Picker-for-jQuery-UI/
+				wp_enqueue_script( 'jquery-ui-multidatespicker', trailingslashit( CTMB_URL ) . 'js/jquery-ui.multidatespicker.js', false, $this->version ); // bust cache on update
 
 			}
 
